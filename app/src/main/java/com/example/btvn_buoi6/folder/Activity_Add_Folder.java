@@ -54,16 +54,20 @@ public class Activity_Add_Folder extends AppCompatActivity {
         String discription = edt_discription.getText().toString().trim();
 
         if (checkFolderName(name)) {
-            Toast.makeText(this, "Tên thư mục đã tồn tại", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.mess_folder_exist), Toast.LENGTH_SHORT).show();
         } else if (name.equals("")) {
             Toast.makeText(this, "Tên thư mục không được để trống", Toast.LENGTH_SHORT).show();
         } else if (discription.equals("")) {
             Toast.makeText(this, "Mô tả thư mục không được để trống", Toast.LENGTH_SHORT).show();
         } else {
-            Intent intent = new Intent(this, Activity_Folder.class);
+            //Intent intent = new Intent(this, Activity_Folder.class);
+            Intent intent = getIntent();
             intent.putExtra("itemFolder", new FolderModel(name, discription));
             setResult(RESULT_OK, intent);
-            finish();
+            //finish();
+            onBackPressed();
+
+
         }
     }
 

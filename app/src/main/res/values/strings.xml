@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BTVN_BUOI6</string>
+
+    <string name="mess_folder_exist">Tên thư mục đã tồn tại</string>
 </resources>

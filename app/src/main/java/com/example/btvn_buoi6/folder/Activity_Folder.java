@@ -37,10 +37,10 @@ public class Activity_Folder extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         tv_add_item_toolbar = findViewById(R.id.tv_add_item_toolbar);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rcv_folder.setLayoutManager(linearLayoutManager);
 
-        adapter = new FolderAdapter(setDataFolderList(),this);
+        adapter = new FolderAdapter(setDataFolderList(), this);
 
         rcv_folder.setAdapter(adapter);
 
@@ -57,13 +57,13 @@ public class Activity_Folder extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == REQUEST_CODE_ADD_ITEM && resultCode == RESULT_OK ){
+        if (requestCode == REQUEST_CODE_ADD_ITEM && resultCode == RESULT_OK) {
             FolderModel folder = (FolderModel) data.getExtras().getSerializable("itemFolder");
-            folderList.add(new FolderModel(folder.getName(),folder.getDescription()));
+            folderList.add(new FolderModel(folder.getName(), folder.getDescription()));
             adapter.notifyDataSetChanged();
             Toast.makeText(this, "Thêm thư mục thành công", Toast.LENGTH_SHORT).show();
 
-        }else if(requestCode == REQUEST_CODE_EDIT_ITEM && resultCode == RESULT_OK ){
+        } else if (requestCode == REQUEST_CODE_EDIT_ITEM && resultCode == RESULT_OK) {
             Bundle bundle = data.getExtras();
             String name = bundle.getString("name");
             String content = bundle.getString("discription");
@@ -74,11 +74,10 @@ public class Activity_Folder extends AppCompatActivity {
         }
 
 
-
     }
 
     private void toActivityAddItem() {
-        Intent intent = new Intent(Activity_Folder.this,Activity_Add_Folder.class);
+        Intent intent = new Intent(Activity_Folder.this, Activity_Add_Folder.class);
         intent.putExtra("list", (Serializable) folderList);
         startActivityForResult(intent, REQUEST_CODE_ADD_ITEM);
     }
@@ -97,9 +96,9 @@ public class Activity_Folder extends AppCompatActivity {
 
     private List<FolderModel> setDataFolderList() {
         folderList = new ArrayList<>();
-        folderList.add(new FolderModel("Tổng hợp tin tức thời sự","Tổng hợp tin tức thời sự nóng hổi nhất, của tất cả báo hiện nay"));
-        folderList.add(new FolderModel("Cảm hứng sáng tạo","Tổng hợp tin tức thời sự nóng hổi nhất, của tất cả báo hiện nay"));
-        folderList.add(new FolderModel("Do It Your Self","Tổng hợp tin tức thời sự nóng hổi nhất, của tất cả báo hiện nay"));
+        folderList.add(new FolderModel("Tổng hợp tin tức thời sự", "Tổng hợp tin tức thời sự nóng hổi nhất, của tất cả báo hiện nay"));
+        folderList.add(new FolderModel("Cảm hứng sáng tạo", "Tổng hợp tin tức thời sự nóng hổi nhất, của tất cả báo hiện nay"));
+        folderList.add(new FolderModel("Do It Your Self", "Tổng hợp tin tức thời sự nóng hổi nhất, của tất cả báo hiện nay"));
 //        folderList.add(new FolderModel("Tổng hợp tin tức thời sự","Tổng hợp tin tức thời sự nóng hổi nhất, của tất cả báo hiện nay"));
 //        folderList.add(new FolderModel("Tổng hợp tin tức thời sự","Tổng hợp tin tức thời sự nóng hổi nhất, của tất cả báo hiện nay"));
 //        folderList.add(new FolderModel("Tổng hợp tin tức thời sự","Tổng hợp tin tức thời sự nóng hổi nhất, của tất cả báo hiện nay"));
